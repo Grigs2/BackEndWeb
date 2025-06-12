@@ -35,5 +35,15 @@ public class Carrinho implements java.io.Serializable {
         this.perfil = perfil;
         this.total = total;
     }
+    public Carrinho(Perfil perfil, double total, List<Produto> produtos) {
+        this.perfil = perfil;
+        this.total = total;
+
+        this.produtosCarrinhos = new ArrayList<>();
+        for (Produto produto : produtos) {
+            ProdutosCarrinho pc = new ProdutosCarrinho(this, produto, 1);
+            this.produtosCarrinhos.add(pc);
+        }
+    }
     public Carrinho() {}
 }

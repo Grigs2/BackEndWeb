@@ -10,12 +10,13 @@ public class PerfilController {
     @Autowired
     private PerfilService perfilService;
 
-    @PostMapping("/Salvar/{nome}/{email}/{senha}/{tipo}")
+    @PostMapping("/Salvar/{nome}/{email}/{senha}/{tipo}/{telefone}")
     public @ResponseBody String Salvar(@PathVariable String nome,
                                        @PathVariable String email,
                                        @PathVariable String senha,
-                                       @PathVariable String tipo){
-        if((perfilService.cadastrar(nome, email, senha, tipo)!=null))
+                                       @PathVariable String tipo,
+                                       @PathVariable String telefone){
+        if((perfilService.cadastrar(nome, email, senha, tipo, telefone)!=null))
             return "Salvo com sucesso";
         else return "Falha ao salvar";
     }

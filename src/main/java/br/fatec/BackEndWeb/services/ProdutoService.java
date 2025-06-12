@@ -13,8 +13,8 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public Produto cadastrar(String nome, String descricao, double valor){
-        return produtoRepository.save(new Produto(nome, descricao, valor));
+    public Produto cadastrar(Produto produto){
+        return produtoRepository.save(new Produto(produto.nome, produto.descricao, produto.preco));
     }
 
     public void deletar(Long id){}

@@ -31,14 +31,26 @@ public class Perfil implements java.io.Serializable {
     @Column(name = "tipo", nullable = false, length = 50)
     public String tipo;
 
+    @Column(name = "telefone", nullable = true, length = 50)
+    public String telefone;
+
     public Perfil() {}
 
-    public Perfil(String nome, String email, String senha, String tipo) {
+    public Perfil(String nome, String email, String senha, String tipo, String telefone) {
+        setNome(nome);
+        setSenha(senha);
+        setEmail(email);
+        setSenha(senha);
+        setTipo(tipo.toUpperCase());
+        setTelefone(telefone);
+    }
+    public Perfil(Long id, String nome, String email, String senha, String tipo, String telefone) {
         setId(id);
         setNome(nome);
         setSenha(senha);
         setEmail(email);
         setSenha(senha);
         setTipo(tipo.toUpperCase());
+        setTelefone(telefone);
     }
 }

@@ -12,8 +12,8 @@ public class PerfilService {
     @Autowired
     private PerfilRepository perfilRepository;
 
-    public Perfil cadastrar(String nome, String email, String senha, String tipo){
-        return perfilRepository.save(new Perfil(nome, email, senha, tipo));
+    public Perfil cadastrar(String nome, String email, String senha, String tipo, String telefone){
+        return perfilRepository.save(new Perfil(nome, email, senha, tipo, telefone));
     }
 
     public Perfil buscarPorId(Long id){

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serial;
+import java.util.List;
 
 @Entity
 @Table(name = "produtos_carrinho", schema = "public")
