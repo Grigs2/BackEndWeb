@@ -18,12 +18,14 @@ public class CarrinhoController {
 
     @PostMapping("/FinalizarCompra")
     public @ResponseBody String FinalizarCompra(@RequestBody CarrinhoDTO dto){
+
+            if(dto==null) return "Erro ao finalizar compra1";
             Carrinho Carrinho = CarrinhoDTO.carrinhoDTOToCarrinho(dto);
-            if(Carrinho==null) return "Erro ao finalizar compra";
+            if(Carrinho==null) return "Erro ao finalizar compra2";
             Carrinho carrinhobd = carrinhoService.cadastrarCarrinho(Carrinho);
-            if(carrinhobd==null) return "Erro ao finalizar compra";
+            if(carrinhobd==null) return "Erro ao finalizar compra3";
             Carrinho.setId(carrinhobd.getId());
-            if(produtosCarrinhoService.cadastrarProdutos(Carrinho.getProdutosCarrinhos())==null) return ("Erro ao finaliar compra");
+            if(produtosCarrinhoService.cadastrarProdutos(Carrinho.getProdutosCarrinhos())==null) return ("Erro ao finaliar compra4");
             else return "Compra finalizada com sucesso";
     }
 }

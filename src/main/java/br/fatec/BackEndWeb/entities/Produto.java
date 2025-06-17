@@ -45,6 +45,8 @@ public class Produto implements Serializable {
         this.descricao = descricao;
         this.preco = preco;
     }
+    public Produto(){
 
+    }
 
 }
