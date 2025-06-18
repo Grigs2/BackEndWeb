@@ -7,22 +7,21 @@ import java.util.List;
 
 public record CarrinhoDTO(Long id,
                           double total,
-                          List<ProdutoDTO> produtos,
-                          PerfilDTO Comprador
+                          List<ProdutoDTO> produtos
                           ) {
     public static CarrinhoDTO carrinhoToDTO(Carrinho carrinho) {
         if(carrinho==null)return null;
         List<ProdutoDTO> produtosDTO = carrinho.getProdutosCarrinhos().stream()
                 .map(pc -> ProdutoDTO.produtoToDTO(pc.getProduto()))
                 .toList();
-        return new CarrinhoDTO(carrinho.getId(), carrinho.getTotal(), produtosDTO, PerfilDTO.perfilToDTO(carrinho.getPerfil()));
+        return new CarrinhoDTO(carrinho.getId(), carrinho.getTotal(), produtosDTO);
     }
-    public static Carrinho carrinhoDTOToCarrinho(CarrinhoDTO carrinhoDTO) {
+    public static Carrinho carrinhoDTOToCarrinho(CarrinhoDTO carrinhoDTO, Perfil comprador) {
         if(carrinhoDTO==null) return null;
-        if(carrinhoDTO.Comprador==null) return null;
+        if(comprador==null) return null;
         if(carrinhoDTO.produtos==null) return null;
         if(carrinhoDTO.produtos.isEmpty()) return null;
 
-        return new Carrinho(PerfilDTO.perfilDTOToPerfil(carrinhoDTO.Comprador, true), carrinhoDTO.total, ProdutoDTO.ListDTOToProdutoList(carrinhoDTO.produtos));
+        return new Carrinho(comprador, carrinhoDTO.total, ProdutoDTO.ListDTOToProdutoList(carrinhoDTO.produtos));
     }
 }

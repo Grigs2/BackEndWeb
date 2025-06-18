@@ -25,10 +25,10 @@ public class PerfilService {
     public List<Perfil> listar(){
         return perfilRepository.findAll();
     }
-    public String autenticar(String email, String senha){
+    public Long autenticar(String email, String senha){
         Perfil perfil = perfilRepository.autenticacao(email, senha).orElse(null);
         if(perfil != null){
-            return perfil.getTipo();
+            return perfil.getId();
         }else return null;
 
 

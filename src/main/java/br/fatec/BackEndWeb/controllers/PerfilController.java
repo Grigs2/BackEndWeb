@@ -22,7 +22,7 @@ public class PerfilController {
     }
 
     @GetMapping("/Autenticar/{email}/{senha}")
-    public @ResponseBody String Autenticar(@PathVariable String email,
+    public @ResponseBody Long Autenticar(@PathVariable String email,
                                            @PathVariable String senha){
         return perfilService.autenticar(email, senha);
     }
